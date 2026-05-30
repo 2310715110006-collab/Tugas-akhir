@@ -201,3 +201,98 @@
     })();
   </script>
 </section>
+/* ==========================================================================
+   CSS NOTULEN KUB - SINKRON TEMA PORTAL UTAMA (TOSKA)
+   ========================================================================== */
+<style>/* ==========================================================================
+   CSS NOTULEN KUB - SINKRON TEMA PORTAL UTAMA (TOSKA)
+   ========================================================================== */
+.notulen-standalone-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.notulen-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.notulen-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.notulen-form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #34495e;
+}
+
+.notulen-form-group label i {
+  color: var(--primary); /* Mengikuti warna toska utama */
+  margin-right: 6px;
+}
+
+.notulen-standalone-form input,
+.notulen-standalone-form select,
+.notulen-standalone-form textarea {
+  font-family: inherit;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 13.5px;
+  color: var(--text);
+  background: #fdfefe;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.notulen-standalone-form input:focus,
+.notulen-standalone-form select:focus,
+.notulen-standalone-form textarea:focus {
+  border-color: var(--primary); /* Fokus warna toska */
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.12); /* Efek glow toska transparan */
+}
+
+.notulen-btn-submit {
+  font-family: inherit;
+  background: var(--primary); /* Menggunakan variabel toska */
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(26, 188, 156, 0.15);
+  transition: all 0.2s ease;
+  min-height: 46px;
+}
+
+.notulen-btn-submit:hover {
+  background: var(--primary-dark); /* Menggunakan variabel toska tua saat di-hover */
+  box-shadow: 0 6px 15px rgba(26, 188, 156, 0.25);
+}
+
+.notulen-btn-submit:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .notulen-form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+</style>
