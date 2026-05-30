@@ -70,7 +70,7 @@
     }
 
     .sidebar.open,
-    .sidebar:hover{width:var(--sidebar-w)}
+    .sidebar:hover { width:var(--sidebar-w) }
 
     .brand{
       height:76px;
@@ -117,7 +117,7 @@
     .sidebar.open .menu-label,
     .sidebar:hover .menu-label{opacity:1}
     .menu-toggle:hover,
-    .menu-toggle.active{background:rgba(255,255,255,.08);color:#fff}
+    .menu-toggle.active-menu{background:rgba(255,255,255,.08);color:#fff}
 
     .submenu{
       list-style:none;
@@ -143,7 +143,8 @@
       white-space:nowrap;
     }
 
-    .submenu a:hover{background:rgba(26,188,156,.16);color:#fff}
+    .submenu a:hover,
+    .submenu a.active { background:rgba(26,188,156,.25); color:#fff; font-weight: 500; }
 
     .main{
       margin-left:var(--sidebar-c);
@@ -391,7 +392,7 @@
 
       <ul class="sidebar-menu">
         <li class="menu-item open">
-          <button class="menu-toggle active" type="button" onclick="toggleSubmenu(this)" aria-expanded="true">
+          <button class="menu-toggle active-menu" type="button" onclick="toggleSubmenu(this)" aria-expanded="true">
             <i class="fa-solid fa-ellipsis-vertical"></i>
             <span class="menu-label">Menu Utama</span>
           </button>
@@ -581,7 +582,7 @@
           </div>
         </div>
       </section>
-      
+
       <section id="keanggotaan" class="section">
         <div class="card">
           <h2 class="section-title">Data Keanggotaan</h2>
@@ -780,26 +781,42 @@
     const sidebar = document.getElementById('sidebar');
     const mobileToggle = document.getElementById('mobileToggle');
 
+    // 1. Memperbaiki Fungsi Buka & Tutup Sidebar HP via Tombol
+    if(mobileToggle) {
+      mobileToggle.addEventListener('click', toggleSidebar);
+    }
+
     function toggleSidebar(){
       sidebar.classList.toggle('open');
       const expanded = sidebar.classList.contains('open');
       mobileToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     }
 
+    // 2. Memperbaiki Manajemen Class Active Navigasi Global
     function showSection(id, el){
+      // Sembunyikan semua section
       sections.forEach(s => s.classList.remove('active'));
+      
+      // Tampilkan section target
       const target = document.getElementById(id);
       if(target) target.classList.add('active');
 
-      document.querySelectorAll('.top-nav a').forEach(a => a.classList.remove('active'));
+      // Reset status aktif di SEMUA link (Top Nav & Sidebar Submenu)
+      document.querySelectorAll('.top-nav a, .submenu a').forEach(navLink => {
+        navLink.classList.remove('active');
+      });
+      
+      // Berikan class active pada elemen yang diklik saat ini
       if(el) el.classList.add('active');
 
+      // Otomatis tutup sidebar jika diakses dari handphone/tablet
       if (window.innerWidth <= 768) {
         sidebar.classList.remove('open');
         mobileToggle.setAttribute('aria-expanded', 'false');
       }
     }
 
+    // 3. Memperbaiki Batasan Seleksi Tab (Aman dari Konflik Id)
     function showTab(event, id){
       const card = event.target.closest('.card');
       const tabs = card.querySelectorAll('.tab-btn');
@@ -812,11 +829,14 @@
 
       panels.forEach(panel => panel.classList.remove('active'));
 
-      document.getElementById(id).classList.add('active');
+      const targetPanel = document.getElementById(id);
+      if(targetPanel) targetPanel.classList.add('active');
+      
       event.target.classList.add('active');
       event.target.setAttribute('aria-selected', 'true');
     }
 
+    // 4. Pengendali Submenu Dropdown Sidebar
     function toggleSubmenu(btn){
       const item = btn.closest('.menu-item');
       item.classList.toggle('open');
@@ -824,6 +844,7 @@
       btn.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
     }
 
+    // Event listener tambahan untuk menutup sidebar di HP pasca klik link submenu
     document.addEventListener('click', (e) => {
       const link = e.target.closest('.submenu a');
       if (link && window.innerWidth <= 768) {
@@ -834,3 +855,4 @@
   </script>
 </body>
 </html>
+
