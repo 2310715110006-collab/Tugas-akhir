@@ -3,253 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uji Coba Subsistem Notulen Rapat KUB - Kelompok 1</title>
+    <title>Uji Coba Menu Navigasi Indeks ke Form Notulen - Faris</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* ==========================================================================
-           CSS SUBSISTEM NOTULEN RAPAT - TEMA BAHARI MODERN (FARIS)
+           CSS KELAS KHUSUS NOTULEN - THEMA BAHARI MODERN (FARIS)
            ========================================================================== */
         
-        /* Body Reset untuk Halaman Uji Coba */
+        /* Smooth Scroll aktif agar efek perpindahan halaman meluncur halus */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             padding: 20px;
-            background-color: #e0f2f1; /* Warna air laut tenang */
+            background-color: #e0f2f1; /* Nuansa air laut dangkal */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Container Utama */
-        .notulen-section {
-            background-color: #f4f7f9;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(2, 88, 155, 0.12);
+        .notulen-container-testing {
+            max-width: 900px;
             margin: 0 auto;
-            max-width: 1200px;
         }
 
-        /* Header Menu Card */
-        .notulen-card-header {
-            background: linear-gradient(135deg, #01579b 0%, #0288d1 100%);
-            color: #ffffff;
-            padding: 25px;
+        /* CARD 1: BLOK MENU INDEKS SEBAGAI NAVIGASI */
+        .notulen-menu-box {
+            background-color: #ffffff;
             border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(1, 87, 155, 0.2);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(1, 87, 155, 0.1);
+            border-top: 5px solid #01579b;
         }
 
-        .notulen-card-header h2 {
-            margin: 0 0 5px 0;
-            font-size: 26px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .notulen-card-header p {
-            margin: 0 0 15px 0;
-            font-size: 14px;
-            color: #e1f5fe;
-            opacity: 0.9;
-        }
-
-        /* Badge Nama Mahasiswa */
-        .notulen-badge {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        /* Layout Grid untuk Form dan Dashboard (Sejajar Kiri-Kanan) */
-        .notulen-grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-
-        /* Styling Setiap Blok/Card */
-        .notulen-card {
-            background: #ffffff;
-            border-left: 5px solid #0288d1;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .notulen-card h3 {
+        .notulen-menu-box h3 {
             color: #01579b;
-            margin: 0 0 5px 0;
-            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .notulen-hint {
-            font-size: 12px;
+        .notulen-menu-box p {
             color: #78909c;
-            margin: 0 0 15px 0;
-            line-height: 1.4;
-        }
-
-        /* Card Lebar Penuh untuk Database Sheets & Indeks */
-        .notulen-full-width {
-            grid-column: span 2;
-            border-left: 5px solid #00acc1;
-        }
-
-        /* Pengaturan Semua Iframes Agar Responsif */
-        .notulen-card iframe {
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            background: #fafafa;
-        }
-
-        /* Tinggi masing-masing iframe disesuaikan proporsional */
-        .notulen-grid-container .notulen-card:nth-child(1) iframe {
-            height: 560px; /* Tinggi Google Form */
-        }
-
-        .notulen-grid-container .notulen-card:nth-child(2) iframe {
-            height: 560px; /* Tinggi Dashboard Looker Studio */
-        }
-
-        .notulen-full-width iframe {
-            height: 400px; /* Tinggi Spreadsheet Google Sheets */
-        }
-
-        /* STYLE INDEKS SEMENTARA */
-        .notulen-index-container {
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .notulen-index-header {
-            border-bottom: 2px solid #0288d1;
-            padding-bottom: 10px;
+            font-size: 13px;
             margin-bottom: 20px;
         }
 
-        .notulen-index-header h3 {
+        /* Daftar Menu Tombol */
+        .notulen-nav-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        /* Desain Link Menu Menu Utama */
+        .notulen-nav-list li a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f4f7f9;
+            color: #37474f;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #cfd8dc;
+            transition: all 0.25s ease-in-out;
+        }
+
+        /* Efek Interaktif Saat Menu Disentuh Kursor (Hover) */
+        .notulen-nav-list li a:hover {
+            background: linear-gradient(135deg, #01579b 0%, #0288d1 100%);
+            color: #ffffff;
+            border-color: #01579b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(1, 87, 155, 0.2);
+        }
+
+        .notulen-nav-list li a:hover i {
+            color: #ffffff;
+        }
+
+        .notulen-nav-list li a i {
+            color: #0288d1;
+            transition: color 0.2s;
+        }
+
+        /* CARD 2: BLOK IFRAME GOOGLE FORM TARGET COOR */
+        .notulen-form-box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(1, 87, 155, 0.1);
+            border-left: 5px solid #00acc1; /* Warna pembeda toska bahari */
+        }
+
+        .notulen-form-box h4 {
             color: #01579b;
-            margin: 0 0 5px 0;
-            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .notulen-index-header p {
-            margin: 0;
-            font-size: 13px;
-            color: #78909c;
-        }
-
-        .notulen-index-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-        }
-
-        .notulen-index-group {
-            background: #fafafa;
-            padding: 15px;
+        .notulen-form-box iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #e0e0e0;
             border-radius: 6px;
-            border-top: 3px solid #0288d1;
-        }
-
-        .notulen-index-letter {
-            font-weight: bold;
-            color: #01579b;
-            font-size: 16px;
-            border-bottom: 1px solid #b0bec5;
-            padding-bottom: 3px;
-            margin-bottom: 10px;
-        }
-
-        .notulen-index-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .notulen-index-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            font-size: 13px;
-            color: #37474f;
-            margin-bottom: 8px;
-            position: relative;
-        }
-
-        /* Efek Titik-Titik Buku Cetak Otomatis */
-        .notulen-index-list li::after {
-            content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 2px;
-            z-index: 1;
-            color: #b0bec5;
-            overflow: hidden;
-            white-space: nowrap;
-            opacity: 0.5;
-        }
-
-        .notulen-index-list li span:first-child {
             background: #fafafa;
-            padding-right: 5px;
-            position: relative;
-            z-index: 2;
         }
 
-        .notulen-page-num {
-            background: #fafafa;
-            padding-left: 5px;
-            position: relative;
-            z-index: 2;
-            font-weight: 600;
-            color: #0288d1;
-        }
-
-        .notulen-index-footer {
-            margin-top: 20px;
-            border-top: 1px dashed #cfd8dc;
-            padding-top: 10px;
-            color: #90a4ae;
-            font-style: italic;
-        }
-
-        /* Responsive Desain untuk HP */
-        @media (max-width: 768px) {
-            .notulen-grid-container, .notulen-index-grid {
+        /* Responsive Desain: Jika di HP, menu tombol susun ke bawah */
+        @media (max-width: 600px) {
+            .notulen-nav-list {
                 grid-template-columns: 1fr;
-            }
-            .notulen-full-width {
-                grid-column: span 1;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="notulen-section">
-    
-    <div class="notulen-card-header">
-        <h2>Sistem Informasi Manajemen Notulensi Rapat KUB</h2>
-        <p>Aplikasi Administrasi Hukum & Validasi Kuorum Kelompok Kelompok 1</p>
-        <span class="notulen-badge"><i class="fas fa-user-gear"></i> Penanggung Jawab: Muhammad Faris Saputra (NIM 2310715110006)
+<div class="notulen-container-testing">
+
+    <div class="notulen-menu-box">
+        <h3><i class="fas fa-compass"></i> Menu Navigasi Administrasi Rapat</h3>
+        <p>Silakan klik salah satu menu/opsi di bawah ini untuk langsung diarahkan menuju halaman Formulir Input data.</p>
+        
+        <ul class="notulen-nav-list">
+            <li><a href="#target-google-form">Input Absensi & Kuorum <i class="fas fa-chevron-right"></i></a></li>
+            <li><a href="#target-google-form">Catat Agenda Utama Pertemuan <i class="fas fa-chevron-right"></i></a></li>
+            <li><a href="#target-google-form">Buka Berita Acara Rapat KUB <i class="fas fa-chevron-right"></i></a></li>
+            <li><a href="#target-google-form">Form Rekap Keputusan Mufakat <i class="fas fa-chevron-right"></i></a></li>
+        </ul>
+    </div>
+
+    <div id="target-google-form" class="notulen-form-box">
+        <h4><i class="fas fa-file-signature"></i> Formulir Digital Notulensi Rapat KUB (Sektor Input)</h4>
+        
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_X-ContohLinkAja/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+    </div>
+
+</div>
+
+</body>
+</html>
