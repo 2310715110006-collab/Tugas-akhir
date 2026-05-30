@@ -3,59 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uji Coba Menu Navigasi Indeks ke Form Notulen - Faris</title>
+    <title>Halaman Uji Coba Navigasi Menu ke Form Notulen - Faris</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* ==========================================================================
-           CSS KELAS KHUSUS NOTULEN - THEMA BAHARI MODERN (FARIS)
+           CSS KHUSUS NOTULEN RAPAT - THEMA BAHARI MODERN (FARIS)
            ========================================================================== */
         
-        /* Smooth Scroll aktif agar efek perpindahan halaman meluncur halus */
+        /* Mengaktifkan fitur scroll halus saat menu navigasi diklik */
         html {
             scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            padding: 20px;
-            background-color: #e0f2f1; /* Nuansa air laut dangkal */
+            padding: 25px;
+            background-color: #e0f2f1; /* Nuansa warna air laut pesisir */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .notulen-container-testing {
+        .notulen-uji-wrapper {
             max-width: 900px;
             margin: 0 auto;
         }
 
-        /* CARD 1: BLOK MENU INDEKS SEBAGAI NAVIGASI */
-        .notulen-menu-box {
+        /* HEADER UTAMA HALAMAN */
+        .notulen-uji-header {
+            background: linear-gradient(135deg, #01579b 0%, #0288d1 100%);
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(1, 87, 155, 0.15);
+            text-align: center;
+        }
+
+        .notulen-uji-header h2 { margin: 0 0 5px 0; font-size: 24px; }
+        .notulen-uji-header p { margin: 0; font-size: 13px; color: #e1f5fe; }
+
+        /* BOX 1: MENU NAVIGASI INDEKS AKTIF */
+        .notulen-box-navigasi {
             background-color: #ffffff;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(1, 87, 155, 0.1);
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
             border-top: 5px solid #01579b;
         }
 
-        .notulen-menu-box h3 {
+        .notulen-box-navigasi h3 {
             color: #01579b;
             margin-top: 0;
             margin-bottom: 5px;
-            font-size: 20px;
+            font-size: 18px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .notulen-menu-box p {
+        .notulen-box-navigasi p {
             color: #78909c;
             font-size: 13px;
             margin-bottom: 20px;
+            margin-top: 0;
         }
 
-        /* Daftar Menu Tombol */
-        .notulen-nav-list {
+        /* Tata letak tombol menu (2 kolom sejajar) */
+        .notulen-daftar-tombol {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
@@ -64,15 +79,15 @@
             list-style: none;
         }
 
-        /* Desain Link Menu Menu Utama */
-        .notulen-nav-list li a {
+        /* Tampilan Link Menu Menuju Form */
+        .notulen-daftar-tombol li a {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: #f4f7f9;
             color: #37474f;
             text-decoration: none;
-            padding: 12px 18px;
+            padding: 14px 18px;
             border-radius: 6px;
             font-size: 14px;
             font-weight: 500;
@@ -80,34 +95,33 @@
             transition: all 0.25s ease-in-out;
         }
 
-        /* Efek Interaktif Saat Menu Disentuh Kursor (Hover) */
-        .notulen-nav-list li a:hover {
+        /* Efek Hover Animasi Saat Kursor Menyentuh Tombol */
+        .notulen-daftar-tombol li a:hover {
             background: linear-gradient(135deg, #01579b 0%, #0288d1 100%);
             color: #ffffff;
             border-color: #01579b;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(1, 87, 155, 0.2);
+            box-shadow: 0 4px 10px rgba(1, 87, 155, 0.25);
         }
 
-        .notulen-nav-list li a:hover i {
+        .notulen-daftar-tombol li a:hover i {
             color: #ffffff;
         }
 
-        .notulen-nav-list li a i {
+        .notulen-daftar-tombol li a i {
             color: #0288d1;
-            transition: color 0.2s;
         }
 
-        /* CARD 2: BLOK IFRAME GOOGLE FORM TARGET COOR */
-        .notulen-form-box {
+        /* BOX 2: CONTAINER GOOGLE FORM (TARGET ANCHOR) */
+        .notulen-box-form {
             background-color: #ffffff;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 4px 15px rgba(1, 87, 155, 0.1);
-            border-left: 5px solid #00acc1; /* Warna pembeda toska bahari */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid #00acc1; /* Aksen toska mencirikan perikanan */
         }
 
-        .notulen-form-box h4 {
+        .notulen-box-form h4 {
             color: #01579b;
             margin-top: 0;
             margin-bottom: 15px;
@@ -117,17 +131,18 @@
             gap: 8px;
         }
 
-        .notulen-form-box iframe {
+        /* Pengaturan bingkai iFrame Google Form */
+        .notulen-box-form iframe {
             width: 100%;
-            height: 600px;
+            height: 650px;
             border: 1px solid #e0e0e0;
             border-radius: 6px;
             background: #fafafa;
         }
 
-        /* Responsive Desain: Jika di HP, menu tombol susun ke bawah */
+        /* Mode Responsive: Jika dibuka di layar HP, tombol menu menjadi 1 kolom vertikal */
         @media (max-width: 600px) {
-            .notulen-nav-list {
+            .notulen-daftar-tombol {
                 grid-template-columns: 1fr;
             }
         }
@@ -135,27 +150,33 @@
 </head>
 <body>
 
-<div class="notulen-container-testing">
+<div class="notulen-uji-wrapper">
 
-    <div class="notulen-menu-box">
-        <h3><i class="fas fa-compass"></i> Menu Navigasi Administrasi Rapat</h3>
-        <p>Silakan klik salah satu menu/opsi di bawah ini untuk langsung diarahkan menuju halaman Formulir Input data.</p>
+    <div class="notulen-uji-header">
+        <h2>Modul Notulen Rapat KUB (Tahap Uji Coba)</h2>
+        <p>Muhammad Faris Saputra | NIM 2310715110006 | Kelompok 1</p>
+    </div>
+
+    <div class="notulen-box-navigasi">
+        <h3><i class="fas fa-map-signs"></i> Indeks Navigasi Cepat Input Data</h3>
+        <p>Klik pada salah satu pilihan indeks menu di bawah ini untuk lompat otomatis ke Formulir Digital.</p>
         
-        <ul class="notulen-nav-list">
-            <li><a href="#target-google-form">Input Absensi & Kuorum <i class="fas fa-chevron-right"></i></a></li>
-            <li><a href="#target-google-form">Catat Agenda Utama Pertemuan <i class="fas fa-chevron-right"></i></a></li>
-            <li><a href="#target-google-form">Buka Berita Acara Rapat KUB <i class="fas fa-chevron-right"></i></a></li>
-            <li><a href="#target-google-form">Form Rekap Keputusan Mufakat <i class="fas fa-chevron-right"></i></a></li>
+        <ul class="notulen-daftar-tombol">
+            <li><a href="#area-google-form">Pencatatan Absensi Rapat <i class="fas fa-arrow-down"></i></a></li>
+            <li><a href="#area-google-form">Input Agenda Masalah KUB <i class="fas fa-arrow-down"></i></a></li>
+            <li><a href="#area-google-form">Buka Formulir Berita Acara <i class="fas fa-arrow-down"></i></a></li>
+            <li><a href="#area-google-form">Simpan Keputusan Mufakat <i class="fas fa-arrow-down"></i></a></li>
         </ul>
     </div>
 
-    <div id="target-google-form" class="notulen-form-box">
-        <h4><i class="fas fa-file-signature"></i> Formulir Digital Notulensi Rapat KUB (Sektor Input)</h4>
+    <div id="area-google-form" class="notulen-box-form">
+        <h4><i class="fas fa-clipboard-check"></i> Lembar Formulir Digital Rapat Kelompok Nelayan</h4>
         
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_X-ContohLinkAja/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfffahJ6UUXSBmdBj7ghFxSX-jgQHAHVD41jwN4nd63iYR17w/viewform?usp=publish-editor" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
     </div>
 
 </div>
 
 </body>
 </html>
+  
