@@ -1,4 +1,4 @@
-    <aside class="sidebar" id="sidebar">
+      <aside class="sidebar" id="sidebar">
       <div class="brand">
         <i class="fa-solid fa-ship"></i>
         <h2>Portal KUB</h2>
@@ -16,4 +16,74 @@
           </ul>
         </li>
       </ul>
+    </aside>
+  <style>
+      .single-menu-item {
+        margin: 12px 10px;
+        list-style: none;
+      }
+      .single-menu-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px;
+        color: #cbd5e1;
+        text-decoration: none;
+        border-radius: 14px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      /* Efek Hover Glowing pas kursor mendekat */
+      .single-menu-link:hover {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: #ffffff;
+        box-shadow: 0 8px 20px rgba(26, 188, 156, 0.3);
+        transform: translateY(-2px);
+      }
+      .single-menu-link i {
+        width: 28px;
+        text-align: center;
+        font-size: 18px;
+        transition: transform 0.3s ease;
+      }
+      .single-menu-link:hover i {
+        transform: scale(1.15);
+      }
+      .sidebar-menu-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #7f8c8d;
+        padding: 10px 24px;
+        display: block;
+        font-weight: 600;
+      }
+      /* Sembunyikan teks menu kalau sidebar sedang mengecil (mode icon-only) */
+      .sidebar:not(:hover):not(.open) .menu-text,
+      .sidebar:not(:hover):not(.open) .sidebar-menu-title {
+        opacity: 0;
+        display: none;
+      }
+    </style>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <i class="fa-solid fa-ship"></i>
+        <h2>Portal KUB</h2>
+      </div>
+
+      <div style="padding-top: 15px;">
+        <span class="sidebar-menu-title">Administrasi</span>
+        <ul class="sidebar-menu">
+          <li class="single-menu-item">
+            <a href="notulen.html" class="single-menu-link">
+              <i class="fa-solid fa-file-signature"></i>
+              <span class="menu-text">Notulen Rapat Kelompok</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </aside>
