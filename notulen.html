@@ -3,36 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIM Perikanan - Evaluasi & Analisis PIECES KUB</title>
+  <title>SIM Perikanan - Notulensi & Evaluasi KUB</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    :root{
-      --bg:#f4f7f6;
-      --card:#ffffff;
-      --primary:#1abc9c;
-      --primary-dark:#16a085;
-      --sidebar:#2c3e50;
-      --sidebar-dark:#1a252f;
-      --text:#2d3436;
-      --muted:#636e72;
-      --line:#e5e7eb;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --radius:18px;
-      --orange:#e67e22;
+    :root {
+      --bg: #f4f7f6;
+      --card: #ffffff;
+      --primary: #1abc9c;
+      --primary-dark: #16a085;
+      --sidebar: #2c3e50;
+      --text: #2d3436;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 18px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Poppins',sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(26,188,156,.10), transparent 30%),
-        radial-gradient(circle at right top, rgba(52,152,219,.09), transparent 26%),
-        var(--bg);
-      color:var(--text);
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       padding: 30px 20px;
     }
 
@@ -41,11 +42,19 @@
       margin: 0 auto;
     }
 
-    /* CSS Tombol Menu Kembali - Menyesuaikan Tema Utama Kelompok */
-    .back-menu-link {
+    /* KONTANER MENU NAVIGASI (Vertikal Berurutan Ke Bawah) */
+    .menu-navigation {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    /* Menu 1: Tombol Kembali Ke Home (Gelap Bahari) */
+    .back-to-home {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       padding: 14px 28px;
       color: #cbd5e1;
       text-decoration: none;
@@ -54,53 +63,61 @@
       font-weight: 500;
       transition: all 0.3s ease;
       background: linear-gradient(135deg, var(--sidebar) 0%, #233140 100%);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      margin-bottom: 25px;
       box-shadow: var(--shadow);
+      width: fit-content;
     }
 
-    /* Efek Glowing & Hover Gradasi Hijau KUB */
-    .back-menu-link:hover {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    .back-to-home:hover {
+      background: #1a252f;
       color: #ffffff;
-      box-shadow: 0 8px 20px rgba(26, 188, 156, 0.3);
+      transform: translateX(-4px);
+    }
+
+    /* Menu 2: Tombol Pintas Isi Form (Hijau Cerah KUB) */
+    .btn-fill-form {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      box-shadow: 0 8px 20px rgba(26, 188, 156, 0.2);
+      width: fit-content;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn-fill-form:hover {
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(26, 188, 156, 0.4);
+      filter: brightness(1.1);
     }
 
-    .back-menu-link i {
-      font-size: 16px;
-      transition: transform 0.3s ease;
+    .btn-fill-form:hover i {
+      animation: pulse 1s infinite;
     }
 
-    .back-menu-link:hover i {
-      transform: translateX(-4px) scale(1.1);
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
     }
 
-    /* Header Modul SIM Perikanan */
-    .topbar-header {
-      background: rgba(255,255,255,.72);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,.7);
-      box-shadow: var(--shadow);
-      border-radius: 22px;
-      padding: 24px;
-      margin-bottom: 30px;
-    }
-
-    .topbar-header h1 { font-size: 22px; color: #1f2d3d; margin-bottom: 6px; }
-    .topbar-header p { color: var(--muted); font-size: 14px; line-height: 1.6; }
-
-    /* Wrapper Box Kontainer Form dan Sheet */
-    .wrapper-box {
+    /* KONTANER BOX UTAMA (KONSISTEN DENGAN CODES SEBELUMNYA) */
+    .content-box {
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.6);
       padding: 24px;
       margin-bottom: 30px;
+      border: 1px solid rgba(0,0,0,0.02);
     }
 
-    .wrapper-box h3 {
+    .content-box h3 {
       font-size: 18px;
       margin-bottom: 20px;
       color: #1f2d3d;
@@ -112,7 +129,7 @@
       padding-bottom: 12px;
     }
 
-    /* Iframe Google Form */
+    /* Pengaturan Frame Google Form */
     .form-iframe {
       width: 100%;
       height: 850px;
@@ -120,11 +137,11 @@
       border-radius: 12px;
     }
 
-    /* Iframe Google Sheets Responsif */
+    /* Pengaturan Frame Google Sheets Responsif */
     .sheet-container {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* Aspek Rasio Laptop 16:9 */
+      padding-bottom: 60%;
       height: 0;
       overflow: hidden;
       border-radius: 12px;
@@ -140,14 +157,12 @@
       border: none;
     }
 
-    /* Pengaturan Layar HP / Mobile */
+    /* Sinkronisasi Responsif Layar Smartphone */
     @media (max-width: 768px) {
       body { padding: 15px 10px; }
-      .topbar-header { padding: 20px; }
-      .topbar-header h1 { font-size: 18px; }
       .form-iframe { height: 1150px; }
-      .sheet-container { padding-bottom: 130%; }
-      .back-menu-link { width: 100%; justify-content: center; }
+      .sheet-container { padding-bottom: 140%; }
+      .back-to-home, .btn-fill-form { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -155,32 +170,28 @@
 
   <div class="container">
     
-    <a href="index.html" class="back-menu-link">
-      <i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Utama KUB
-    </a>
-   <div class="content-box" id="form-kepuasan">
+    <div class="menu-navigation">
+      <a href="index.html" class="back-to-home">
+        <i class="fa-solid fa-house"></i> Kembali ke Halaman Utama KUB
+      </a>
+      
+      <a href="#form-kepuasan" class="btn-fill-form">
+        <i class="fa-solid fa-file-signature"></i> Isi Form Tingkat Kepuasan Sistem
+      </a>
+    </div>
+
+    <div class="content-box" id="form-kepuasan">
       <h3><i class="fa-solid fa-pen-to-square" style="color: var(--primary);"></i> Form Input Data Evaluasi & Notulensi</h3>
-      <iframe class="form-iframe" src=""https:docs.google.comformsde1FAIpQLSe26uMFEFUv0v2gYpKeUYXUSGZ7Tt6KPZp_Bi8cLcVCfqBmSQviewform?embeddedtrue">Loading…</iframe>">
-      </iframe>
-    </div>
-
-    <div class="topbar-header">
-      <h1>Modul Evaluasi Kinerja & Analisis PIECES Kelompok Nelayan</h1>
-      <p>Sistem Informasi Manajemen Perikanan: Instrumen pengumpul data primer tingkat kepuasan manajemen operasional KUB serta visualisasi matriks keputusan berbasis kerangka kerja PIECES.</p>
-    </div>
-
-    <div class="wrapper-box">
-      <h3><i class="fa-solid fa-square-poll-horizontal" style="color: var(--primary);"></i> Kuesioner Evaluasi Kepuasan Anggota KUB</h3>
       <iframe class="form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSc-N4DoT2gUJyhBPuUd13c__iSqusGCd7WX3VSFFTWH34-CPA/viewform?embedded=true">
-        Menyiapkan Formulir…
+        Memuat Formulir…
       </iframe>
     </div>
 
-    <div class="wrapper-box">
-      <h3><i class="fa-solid fa-database" style="color: var(--primary);"></i> Log Rekam Data Primer Responden (Target: 10-20 Anggota)</h3>
+    <div class="content-box">
+      <h3><i class="fa-solid fa-table" style="color: var(--primary);"></i> Spreadsheet Laporan & Analisis PIECES</h3>
       <div class="sheet-container">
         <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSRooDVs0qjc8Dv0O106SuSUbmmTJdgucJu9LZOhqeobvmPuhRMMMuSf5C7ByqJEZE-mBY2m1QIgNhI/pubhtml?gid=841476578&single=true&chrome=false&headers=false&rm=minimal">
-          Menyiapkan Lembar Kerja Laporan…
+          Memuat Spreadsheet Kerja…
         </iframe>
       </div>
     </div>
